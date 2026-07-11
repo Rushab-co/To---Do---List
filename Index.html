@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quest Log — Daily To-Do Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">✦</span>
+      <h1>Quest Log</h1>
+    </div>
+    <div class="streak-display" id="streakDisplay">
+      <span class="flame" id="flameIcon">🔥</span>
+      <div class="streak-text">
+        <span class="streak-number" id="streakCount">0</span>
+        <span class="streak-label">day streak</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <section class="panel task-panel">
+      <div class="date-nav">
+        <button id="prevDay" class="nav-btn" aria-label="Previous day">‹</button>
+        <div class="date-current">
+          <input type="date" id="datePicker">
+          <span id="dateReadable" class="date-readable"></span>
+        </div>
+        <button id="nextDay" class="nav-btn" aria-label="Next day">›</button>
+        <button id="todayBtn" class="today-btn">Today</button>
+      </div>
+
+      <div class="progress-row">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-label" id="progressLabel">0 / 0 done</span>
+      </div>
+
+      <form id="taskForm" class="add-task-form">
+        <input type="text" id="taskInput" placeholder="Add a quest for this day…" autocomplete="off" required>
+        <select id="taskPriority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit" class="add-btn">Add</button>
+      </form>
+
+      <ul id="taskList" class="task-list"></ul>
+
+      <p id="emptyState" class="empty-state" hidden>
+        Nothing logged for this day yet. Add your first quest above.
+      </p>
+    </section>
+
+    <aside class="panel side-panel">
+      <div class="side-block">
+        <h2>Streak</h2>
+        <p class="side-sub" id="streakSub">Complete every quest in a day to keep it alive.</p>
+        <div class="streak-meta">
+          <div class="meta-item">
+            <span class="meta-value" id="currentStreakVal">0</span>
+            <span class="meta-label">Current</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-value" id="bestStreakVal">0</span>
+            <span class="meta-label">Best</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-value" id="totalDoneVal">0</span>
+            <span class="meta-label">Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <h2>Badges</h2>
+        <p class="side-sub">Earned by finishing days and building streaks.</p>
+        <div class="badge-grid" id="badgeGrid"></div>
+      </div>
+    </aside>
+
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
